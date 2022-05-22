@@ -6,7 +6,7 @@ import os
 from sklearn.model_selection import train_test_split
 
 # all emotions on RAVDESS dataset
-emotions = {
+int2emotion = {
     "01": "neutral",
     "02": "calm",
     "03": "happy",
@@ -16,6 +16,7 @@ emotions = {
     "07": "disgust",
     "08": "surprised"
 }
+
 # we allow only these emotions
 AVAILABLE_EMOTIONS = {
     "angry",
@@ -67,13 +68,13 @@ def extract_feature(file_name, **kwargs):
 
 def load_data(test_size=0.2):
     X, y = [], []
-    for file in glob.glob("C:\\Users\\windows\\PycharmProjects\\RayaWesal\\data\\Actor_*\\*.wav"):
+    for file in glob.glob("C:\\Users\\windows\\PycharmProjects\\Project\\data\\Actor_*\\*.wav"):
         # get the base name of the audio file
         basename = os.path.basename(file)
         # get the emotion label
-        emotion = emotions[basename.split("-")[2]]
+        emotion = int2emotion[basename.split("-")[2]]
         # we allow only AVAILABLE_EMOTIONS we set
-        # if emotion not in emotions:
+        # if emotion not in AVAILABLE_EMOTIONS:
         #     continue
         # extract speech features
         features = extract_feature(file, mfcc=True, chroma=True, mel=True)
@@ -82,3 +83,6 @@ def load_data(test_size=0.2):
         y.append(emotion)
     # split the data to training and testing and return it
     return train_test_split(np.array(X), y, test_size=test_size, random_state=7)
+# load RAVDESS dataset, 75% training 25% testing
+x_train, x_test, y_train, y_test = load_data(test_size=0.25)
+
