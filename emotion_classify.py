@@ -19,4 +19,4 @@ class emotion_model(object):
 
 #predict file
 print(emotion_model().predict('C:\\Users\\windows\\PycharmProjects\\RayaWesal\\data\\Actor_03\\03-01-01-01-01-01-03.wav'))
-# print(emotion_model().predict('C:\\Users\\windows\\PycharmProjects\\RayaWesal\\data\\Actor_19\\03-01-08-02-02-02-19.wav'))
+print(emotion_model().predict('C:\\Users\\windows\\PycharmProjects\\RayaWesal\\data\\Actor_19\\03-01-08-02-02-02-19.wav'))
