@@ -17,13 +17,19 @@ int2emotion = {
     "08": "surprised"
 }
 
-# we allow only these emotions
+# we allow these emotions
 AVAILABLE_EMOTIONS = {
-    "angry",
-    "sad",
     "neutral",
-    "happy"
+    "calm",
+    "happy",
+    "sad",
+    "angry",
+    "fear",
+    "disgust",
+    "ps", # pleasant surprised
+    "boredom"
 }
+
 
 def extract_feature(file_name, **kwargs):
     """
@@ -68,7 +74,7 @@ def extract_feature(file_name, **kwargs):
 
 def load_data(test_size=0.2):
     X, y = [], []
-    for file in glob.glob("C:\\Users\\windows\\PycharmProjects\\finalproject\\data\\Actor_*\\*.wav"):
+    for file in glob.glob("C:\\Users\\windows\\PycharmProjects\\RayaWesal\\data\\Actor_*\\*.wav"):
         # get the base name of the audio file
         basename = os.path.basename(file)
         # get the emotion label
