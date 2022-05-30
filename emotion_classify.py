@@ -18,5 +18,5 @@ class emotion_model(object):
         return result
 
 #predict file
-print(emotion_model().predict('C:\\Users\\windows\\PycharmProjects\\RayaWesal\\data\\Actor_03\\03-01-01-01-01-01-03.wav'))
-print(emotion_model().predict('C:\\Users\\windows\\PycharmProjects\\RayaWesal\\data\\Actor_19\\03-01-08-02-02-02-19.wav'))
+print(emotion_model().predict("C:\\Users\\IMOE001\\Downloads\\FinalProject-master (1)\\FinalProject-master\\data\\Actor_03\\03-01-01-01-01-01-03.wav"))
+#print(emotion_model().predict('C:\\Users\\windows\\PycharmProjects\\RayaWesal\\data\\Actor_19\\03-01-08-02-02-02-19.wav'))

@@ -31,6 +31,18 @@ AVAILABLE_EMOTIONS = {
 }
 
 
+def get_audio_config(features_list):
+    """
+    Converts a list of features into a dictionary understandable by
+    `data_extractor.AudioExtractor` class
+    """
+    audio_config = {'mfcc': False, 'chroma': False, 'mel': False, 'contrast': False, 'tonnetz': False}
+    for feature in features_list:
+        if feature not in audio_config:
+            raise TypeError(f"Feature passed: {feature} is not recognized.")
+        audio_config[feature] = True
+    return audio_config
+
 def extract_feature(file_name, **kwargs):
     """
     Extract feature from audio file `file_name`
@@ -74,7 +86,11 @@ def extract_feature(file_name, **kwargs):
 
 def load_data(test_size=0.2):
     X, y = [], []
-    for file in glob.glob("C:\\Users\\windows\\PycharmProjects\\RayaWesal\\data\\Actor_*\\*.wav"):
+    #C:\Users\IMOE001\Downloads\FinalProject - master(1).zip\FinalProject - master\data
+    for file in glob.glob("C:\\Users\\IMOE001\\Downloads\\FinalProject-master ("
+                          "1)\\FinalProject-master\\data\\Actor_*\\*.wav"):
+
+    #for file in glob.glob("C:\\Users\\IMOE001\\Desktop\\pro\\data\\Actor_*\\*.wav"):
         # get the base name of the audio file
         basename = os.path.basename(file)
         # get the emotion label
@@ -90,5 +106,5 @@ def load_data(test_size=0.2):
     # split the data to training and testing and return it
     return train_test_split(np.array(X), y, test_size=test_size, random_state=7)
 # load RAVDESS dataset, 75% training 25% testing
-x_train, x_test, y_train, y_test = load_data(test_size=0.25)
+#x_train, x_test, y_train, y_test = load_data(test_size=0.25)
 
